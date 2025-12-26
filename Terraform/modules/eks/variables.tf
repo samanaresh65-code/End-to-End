@@ -12,7 +12,7 @@ variable "kubernetes_version" {
 
 variable "instance_types" {
   type        = list(string)
-  default     = ["t3.micro"]
+  default     = ["t3.small"]
   description = "Instance types for worker nodes"
 }
 
