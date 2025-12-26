@@ -9,7 +9,7 @@ on:
 env:
   AWS_REGION: us-east-1
   ECR_REPOSITORY: my-devops-ecr
-  EKS_CLUSTER_NAME: my-eks-cluster
+  EKS_CLUSTER_NAME: myeks-cluster
   HELM_CHART_PATH: ./app/helm/petclinic
 
 jobs:
