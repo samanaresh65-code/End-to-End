@@ -14,9 +14,7 @@ output "igw_id" {
   value = module.vpc.igw_id
 }
 
-output "rt_id" {
-  value = module.vpc.rt_id
-}
+
 
 output "security_group_id" {
   value = module.vpc.security_group_id

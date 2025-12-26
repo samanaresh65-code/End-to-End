@@ -6,6 +6,13 @@ terraform {
       version = ">= 5.0.0"
     }
   }
+  backend "s3" {
+    bucket         = "terraform-bucket-sama"
+    key            = "root/terraform.tfstate"
+    region         = "us-east-1"
+    dynamodb_table = "terraform-state-locks"
+    encrypt        = true
+  }
 }
 
 provider "aws" {
@@ -26,8 +33,9 @@ module "vpc" {
 
 module "eks" {
   source     = "./modules/eks"
-  subnet_ids = [module.vpc.private_subnet_id, module.vpc.public_subnet_id]
+  subnet_ids = [module.vpc.private_subnet_id, module.vpc.private_subnet_2_id]
 }
+
 
 module "ecr" {
   source          = "./modules/ecr"

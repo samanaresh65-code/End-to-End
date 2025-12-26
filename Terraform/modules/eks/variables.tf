@@ -6,13 +6,13 @@ variable "cluster_name" {
 
 variable "kubernetes_version" {
   type        = string
-  default     = "1.28"
+  default     = "1.29"
   description = "Kubernetes version"
 }
 
 variable "instance_types" {
   type        = list(string)
-  default     = ["t2.micro"]
+  default     = ["t3.micro"]
   description = "Instance types for worker nodes"
 }
 

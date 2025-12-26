@@ -1,12 +1,12 @@
 variable "ami" {
   type        = string
-  default     = "ami-00e428798e77d38d9"
+  default     = "ami-068c0051b15cdb816"
   description = "Default AMI for AWS"
 }
 
 variable "instance_type" {
   type        = string
-  default     = "t2.micro"
+  default     = "t3.micro"
   description = "Default instance type for AWS"
 }
 

@@ -15,8 +15,20 @@ variable "public_subnet_cidr_block" {
   description = "Default public subnet cidr block for AWS"
 }
 
+variable "public_subnet_cidr_block_2" {
+  type        = string
+  default     = "10.0.3.0/24"
+  description = "Default second public subnet cidr block for AWS"
+}
+
 variable "private_subnet_cidr_block" {
   type        = string
   default     = "10.0.2.0/24"
   description = "Default private subnet cidr block for AWS"
+}
+
+variable "private_subnet_cidr_block_2" {
+  type        = string
+  default     = "10.0.4.0/24"
+  description = "Default second private subnet cidr block for AWS"
 }
