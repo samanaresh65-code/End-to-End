@@ -51,13 +51,19 @@ jobs:
       - name: Update kubeconfig
         run: aws eks update-kubeconfig --name ${{ env.EKS_CLUSTER_NAME }} --region ${{ env.AWS_REGION }}
 
-      - name: Deploy to EKS with Helm
+      - name: Update Image Tag in Git
         env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          helm upgrade --install petclinic ${{ env.HELM_CHART_PATH }} \
-            --set image.repository=$ECR_REGISTRY/$ECR_REPOSITORY \
-            --set image.tag=$IMAGE_TAG \
-            --set service.type=LoadBalancer \
-            --wait
+          # 1. Configure Git
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # 2. Update the YAML file using sed (Stream Editor)
+          # This looks for 'tag: ...' and replaces it with 'tag: <new-sha>'
+          sed -i "s/tag: .*/tag: $IMAGE_TAG/" clusters/myeks-cluster/petclinic-release.yaml
+
+          # 3. Commit and Push
+          git add clusters/myeks-cluster/petclinic-release.yaml
+          git commit -m "deploy: update image tag to $IMAGE_TAG"
+          git push
