@@ -16,6 +16,6 @@ spec:
   values:
     image:
       repository: 238108322530.dkr.ecr.us-east-1.amazonaws.com/my-devops-ecr
-      tag: latest # We will solve the specific tag issue next
+      tag: eb42173ee3b82842f097eac96ecbd99ea020c931
     service:
       type: LoadBalancer
