@@ -2,7 +2,7 @@ INSERT IGNORE INTO vets VALUES (1, 'James', 'Carter');
 INSERT IGNORE INTO vets VALUES (2, 'Helen', 'Leary');
 INSERT IGNORE INTO vets VALUES (3, 'Linda', 'Douglas');
 INSERT IGNORE INTO vets VALUES (4, 'Rafael', 'Ortega');
-INSERT IGNORE INTO vets VALUES (5, 'Henry', 'Stevens');
+INSERT IGNORE INTO vets VALUES (5, 'Henry', 'Vecna');
 INSERT IGNORE INTO vets VALUES (6, 'Sharon', 'Jenkins');
 
 INSERT IGNORE INTO specialties VALUES (1, 'radiology');
@@ -17,10 +17,10 @@ INSERT IGNORE INTO vet_specialties VALUES (5, 1);
 
 INSERT IGNORE INTO types VALUES (1, 'cat');
 INSERT IGNORE INTO types VALUES (2, 'dog');
-INSERT IGNORE INTO types VALUES (3, 'lizard');
-INSERT IGNORE INTO types VALUES (4, 'snake');
-INSERT IGNORE INTO types VALUES (5, 'bird');
-INSERT IGNORE INTO types VALUES (6, 'hamster');
+INSERT IGNORE INTO types VALUES (3, 'lion');
+INSERT IGNORE INTO types VALUES (4, 'tiger');
+INSERT IGNORE INTO types VALUES (5, 'elephant');
+INSERT IGNORE INTO types VALUES (6, 'giraffe');
 
 INSERT IGNORE INTO owners VALUES (1, 'George', 'Franklin', '110 W. Liberty St.', 'Madison', '6085551023');
 INSERT IGNORE INTO owners VALUES (2, 'Betty', 'Davis', '638 Cardinal Ave.', 'Sun Prairie', '6085551749');
