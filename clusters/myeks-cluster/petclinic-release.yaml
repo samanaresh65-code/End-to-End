@@ -16,6 +16,6 @@ spec:
   values:
     image:
       repository: 238108322530.dkr.ecr.us-east-1.amazonaws.com/my-devops-ecr
-      tag: e062a22fdf6223228a599035bd065422aa4b326a
+      tag: a375c525442991fb89439a4d7996d801dd5c173f
     service:
       type: LoadBalancer
