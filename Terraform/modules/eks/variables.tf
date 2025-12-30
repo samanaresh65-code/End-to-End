@@ -33,7 +33,7 @@ variable "scaling_config" {
     min_size     = number
     max_size     = number
   })
-  default     = { desired_size = 2, min_size = 2, max_size = 3 }
+  default     = { desired_size = 3, min_size = 2, max_size = 3 }
   description = "Scaling configuration for the EKS node group"
 }
 
