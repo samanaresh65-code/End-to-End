@@ -2,8 +2,9 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: istio-base
-  namespace: istio-system
+  namespace: flux-system # ← Changed from istio-system
 spec:
+  targetNamespace: istio-system # ← Add this line
   interval: 1m
   chart:
     spec:
