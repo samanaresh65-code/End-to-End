@@ -61,9 +61,9 @@ jobs:
 
           # 2. Update the YAML file using sed (Stream Editor)
           # This looks for 'tag: ...' and replaces it with 'tag: <new-sha>'
-          sed -i "s/tag: .*/tag: $IMAGE_TAG/" clusters/myeks-cluster/petclinic-release.yaml
+          sed -i "s/tag: .*/tag: $IMAGE_TAG/" clusters/myeks-cluster/petclinic-v2-release.yaml
 
           # 3. Commit and Push
-          git add clusters/myeks-cluster/petclinic-release.yaml
+          git add clusters/myeks-cluster/petclinic-v2-release.yaml
           git commit -m "deploy: update image tag to $IMAGE_TAG"
           git push
