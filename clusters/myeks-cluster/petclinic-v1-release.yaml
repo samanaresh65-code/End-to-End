@@ -4,6 +4,9 @@ metadata:
   name: petclinic-v1 # ← Changed from petclinic
   namespace: default
 spec:
+  dependsOn:
+    - name: kube-prometheus-stack
+      namespace: flux-system
   interval: 5m
   chart:
     spec:
