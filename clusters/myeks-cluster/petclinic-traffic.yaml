@@ -5,7 +5,9 @@ metadata:
   namespace: default
 spec:
   hosts:
-    - petclinic-petclinic # The Service name from your Helm chart
+    - "*" # Accept traffic for all hosts (demo mode)
+  gateways:
+    - petclinic-gateway # Link to the Gateway resource we will create
   http:
     - match:
         - headers:

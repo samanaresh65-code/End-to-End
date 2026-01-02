@@ -1,0 +1,15 @@
+apiVersion: networking.istio.io/v1beta1
+kind: Gateway
+metadata:
+  name: petclinic-gateway
+  namespace: default
+spec:
+  selector:
+    istio: ingressgateway # Selects the istio-ingressgateway pod
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "*"
