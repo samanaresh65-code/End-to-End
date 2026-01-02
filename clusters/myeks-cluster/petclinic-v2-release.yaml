@@ -1,0 +1,22 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: petclinic-v2
+  namespace: default
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ./app/helm/petclinic
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+      interval: 1m
+  values:
+    version: v2 # ← V2 label
+    image:
+      repository: 238108322530.dkr.ecr.us-east-1.amazonaws.com/my-devops-ecr
+      tag: bf9d72ae2ad2a1eb580745a99a7f4362b34ef3cb # ← Same tag initially (we'll change later)
+    service:
+      type: ClusterIP # ← Not LoadBalancer! V1 handles external traffic

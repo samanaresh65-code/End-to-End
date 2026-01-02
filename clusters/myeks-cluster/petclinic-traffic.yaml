@@ -1,0 +1,41 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: petclinic
+  namespace: default
+spec:
+  hosts:
+    - petclinic-petclinic # The Service name from your Helm chart
+  http:
+    - match:
+        - headers:
+            x-version:
+              exact: "v2" # If user sends this header, force V2
+      route:
+        - destination:
+            host: petclinic-petclinic
+            subset: v2
+    - route: # Default route (90/10 split)
+        - destination:
+            host: petclinic-petclinic
+            subset: v1
+          weight: 90
+        - destination:
+            host: petclinic-petclinic
+            subset: v2
+          weight: 10
+---
+apiVersion: networking.istio.io/v1beta1
+kind: DestinationRule
+metadata:
+  name: petclinic
+  namespace: default
+spec:
+  host: petclinic-petclinic
+  subsets:
+    - name: v1
+      labels:
+        version: v1 # Matches pods with this label
+    - name: v2
+      labels:
+        version: v2 # Matches pods with this label

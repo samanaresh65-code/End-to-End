@@ -1,0 +1,15 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: petclinic
+  namespace: default
+  labels:
+    app: petclinic
+spec:
+  selector:
+    matchLabels:
+      app: petclinic # Matches your Service labels
+  endpoints:
+    - port: http # Port name from your Service
+      path: /actuator/prometheus # Spring Boot Actuator endpoint
+      interval: 30s

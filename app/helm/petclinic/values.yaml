@@ -1,5 +1,7 @@
 replicaCount: 1
 
+version: v1
+
 image:
   repository: petclinic
   tag: v1

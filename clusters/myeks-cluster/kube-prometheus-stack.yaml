@@ -1,0 +1,31 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kube-prometheus-stack
+  namespace: flux-system
+spec:
+  targetNamespace: monitoring
+  interval: 5m
+  chart:
+    spec:
+      chart: kube-prometheus-stack
+      version: 65.0.0
+      sourceRef:
+        kind: HelmRepository
+        name: prometheus-community
+        namespace: flux-system
+  install:
+    createNamespace: true
+  values:
+    prometheus:
+      prometheusSpec:
+        serviceMonitorSelectorNilUsesHelmValues: false # Important: scrape all ServiceMonitors
+        resources:
+          requests:
+            memory: 512Mi
+            cpu: 250m
+    grafana:
+      enabled: true
+      adminPassword: admin # Change this in production!
+      service:
+        type: LoadBalancer # Makes Grafana accessible
