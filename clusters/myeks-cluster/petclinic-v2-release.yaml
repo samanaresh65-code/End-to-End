@@ -17,6 +17,6 @@ spec:
     version: v2 # ← V2 label
     image:
       repository: 238108322530.dkr.ecr.us-east-1.amazonaws.com/my-devops-ecr
-      tag: cbb8a63c96c6924c5ea0b45e2742d44f0d6a821c
+      tag: 41df3c01aa97f96a6b2159716a88945711d58aa5
     service:
       type: ClusterIP # ← Not LoadBalancer! V1 handles external traffic
