@@ -17,6 +17,6 @@ spec:
     version: v1 # ← Add this
     image:
       repository: 238108322530.dkr.ecr.us-east-1.amazonaws.com/my-devops-ecr
-      tag: bf9d72ae2ad2a1eb580745a99a7f4362b34ef3cb # ← Keep current stable tag
+      tag: bed9eeb0bfb6827fd093f23972a0623bb3520b1b # ← Keep current stable tag
     service:
       type: LoadBalancer
