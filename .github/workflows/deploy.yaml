@@ -3,8 +3,12 @@ name: Build and Deploy to EKS
 on:
   push:
     branches: ["main"]
+    paths:
+      - "app/**"
   pull_request:
     branches: ["main"]
+    paths:
+      - "app/**"
 
 env:
   AWS_REGION: us-east-1
