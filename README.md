@@ -6,31 +6,31 @@ This repository demonstrates a production-grade DevOps workflow for deploying a 
 
 ```mermaid
 graph TD
-    User([User]) -->|HTTPS| IGW[Internet Gateway]
-    IGW --> ALB[AWS Load Balancer]
-    ALB -->|Port 80| IG[Istio Ingress Gateway]
+    User([User]) -- "HTTPS" --> IGW["Internet Gateway"]
+    IGW --> ALB["AWS Load Balancer"]
+    ALB -- "Port 80" --> IG["Istio Ingress Gateway"]
     
     subgraph EKS Cluster
         subgraph "Istio Service Mesh"
-            IG -->|VirtualService (90%)| V1[PetClinic V1 Pods]
-            IG -->|VirtualService (10%)| V2[PetClinic V2 Canary]
+            IG -- "VirtualService (90%)" --> V1["PetClinic V1 Pods"]
+            IG -- "VirtualService (10%)" --> V2["PetClinic V2 Canary"]
         end
         
         subgraph "Observability Stack"
-            Prom[Prometheus] -->|Scrapes Metrics| V1
-            Prom -->|Scrapes Metrics| V2
-            Grafana[Grafana] -->|Queries| Prom
+            Prom["Prometheus"] -- "Scrapes Metrics" --> V1
+            Prom -- "Scrapes Metrics" --> V2
+            Grafana["Grafana"] -- "Queries" --> Prom
         end
 
         subgraph "GitOps Control Plane"
-            Flux[Flux CD] -->|Pulls State| Git[GitHub Repo]
-            Flux -->|Applies Manifests| K8sApi[K8s API]
+            Flux["Flux CD"] -- "Pulls State" --> Git["GitHub Repo"]
+            Flux -- "Applies Manifests" --> K8sApi["K8s API"]
         end
     end
     
-    Dev[Developer] -->|Push Code| Git
-    GA[GitHub Actions] -->|Build & Push Image| ECR[Amazon ECR]
-    GA -->|Update Tag| Git
+    Dev["Developer"] -- "Push Code" --> Git
+    GA["GitHub Actions"] -- "Build & Push Image" --> ECR["Amazon ECR"]
+    GA -- "Update Tag" --> Git
 ```
 
 ---
